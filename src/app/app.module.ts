@@ -1,16 +1,24 @@
+// Modules
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { NutritionAnalysisModule } from './nutrition-analysis/nutrition-analysis.module';
+// Components
 import { AppComponent } from './app.component';
+ 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    HttpClientModule,
+  //  AppRoutingModule,
+    NutritionAnalysisModule
   ],
   providers: [],
   bootstrap: [AppComponent]

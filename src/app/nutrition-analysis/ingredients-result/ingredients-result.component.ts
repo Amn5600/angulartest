@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { DataService } from '../data.service';
+import { DataService } from '../../data.service';
 
 @Component({
   selector: 'app-ingredients-result',
@@ -13,16 +13,21 @@ export class IngredientsResultComponent implements OnInit {
 
   nutrition = [];
   showNutrition = false;
-
-
+  showError = false;
 
   ngOnInit(): void {
     this.showNutrition = true;
     this.nutrition = this.dataService['data'];
+   
+
     //redirect if no result
     if (!this.nutrition['ingredients']) {
-      this.router.navigate(['/home'])
+      this.router.navigate(['/nutrition'])
     };
+    
+     if (this.nutrition['ingredients'][0]['parsed'] == undefined) {
+      this.showError = true
+    }
   }
 
 }
