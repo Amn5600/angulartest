@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col pt-5">
-            <a class="btn btn-primary" [routerLink]="['/nutrition']">New recipe</a>
+            <a class="btn btn-primary" [routerLink]="['/nutrition']">Back</a>
         </div>
     </div>
-    <div class="row mt-2"  *ngIf="showError">
+    <div class="row mt-2" *ngIf="showError">
         <div class="col">
             <p class="text-danger">
-                We cannot calculate the nutrition for some ingredients. Please check the ingredient spelling or if you have entered a quantities for the ingredients.
+                We cannot calculate the nutrition for some ingredients.
             </p>
         </div>
     </div>
@@ -21,19 +21,21 @@
                         <th scope="col">Food</th>
                         <th scope="col">Calories</th>
                         <th scope="col">Weight</th>
-                    </tr>
+                     </tr>
                 </thead>
                 <tbody *ngIf="!showError">
-                    <tr *ngFor="let data of nutrition.ingredients; let i=index" >
+                    <tr *ngFor="let data of nutrition.ingredients; let i=index">
                         <td scope="col">{{data.parsed[0].quantity}}</td>
                         <td scope="col">{{data.parsed[0].measure}}</td>
                         <td scope="col">{{data.parsed[0].foodMatch}}</td>
                         <td scope="col">{{data.parsed[0].nutrients?.ENERC_KCAL?.quantity.toFixed(1)}} kcal</td>
                         <td scope="col">{{data.parsed[0].weight.toFixed(1)}} g</td>
+  
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+ 
 
 </div>

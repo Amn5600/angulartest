@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { DataService } from '../../data.service';
+import { DataService } from '../../shared/services/data.service';
 import { Router } from '@angular/router';
 
 
@@ -26,8 +26,7 @@ export class IngredientsFormComponent implements OnInit {
     this.isLoading = true;
     this.showNutrition = false;
 
-    this.dataService.formValue = this.ingredientsForm.value
-
+    this.dataService.formValue = this.ingredientsForm.value;
     const ingredients = { ingr: this.ingredientsForm.value.ingredients.trim().replace(/,/g, '').split('\n') }
  
     this.dataService.sendPostRequest(ingredients).subscribe((data: any[]) => {

@@ -3,6 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  api:'https://api.edamam.com/api/nutrition-details',
+  app_id:'47379841',
+  app_key:'d28718060b8adfd39783ead254df7f92',
   production: false
 };
 

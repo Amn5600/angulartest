@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from './../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class DataService {
   public formValue = '';
   public data = [];
-  private REST_API_SERVER = "https://api.edamam.com/api/nutrition-details?app_id=47379841&app_key=d28718060b8adfd39783ead254df7f92";
+  private REST_API_SERVER = `${environment.api}?app_id=${environment.app_id}&app_key=${environment.app_key}`;
 
   constructor(private httpClient: HttpClient) { }
 

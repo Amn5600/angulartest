@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import {  AuthGuardService as AuthGuard} from '../auth/auth-guard.service';
+import {  AuthGuardService as AuthGuard} from '../shared/auth/auth-guard.service';
 
 // Components
 import { IngredientsFormComponent } from './ingredients-form/ingredients-form.component';
@@ -16,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), ReactiveFormsModule],
-  exports: [RouterModule, ReactiveFormsModule]
+  imports: [RouterModule.forChild(routes), ReactiveFormsModule],
+  exports: [RouterModule,ReactiveFormsModule]
 })
 export class NutritionRoutingModule { }

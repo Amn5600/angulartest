@@ -5,7 +5,7 @@ import { NutritionRoutingModule } from './nutrition-routing.module';
 import { NutritionAnalysisComponent } from './nutrition-analysis.component';
 import { IngredientsFormComponent } from './ingredients-form/ingredients-form.component';
 import { IngredientsResultComponent } from './ingredients-result/ingredients-result.component';
-
+  
 
 
 
@@ -14,8 +14,8 @@ import { IngredientsResultComponent } from './ingredients-result/ingredients-res
   declarations: [
     IngredientsFormComponent,
     IngredientsResultComponent,
-    NutritionAnalysisComponent
-  ],
+    NutritionAnalysisComponent,
+   ],
   imports: [
     CommonModule,
     NutritionRoutingModule
