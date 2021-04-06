@@ -26,15 +26,30 @@ export class IngredientsFormComponent implements OnInit {
     this.isLoading = true;
     this.showNutrition = false;
 
+    interface ResponseInterface {
+      calories: number,
+      cautions: [],
+      dietLabels: [],
+      healthLabels: [],
+      ingredients: [],
+      totalDaily: {},
+      totalNutrients: {},
+      totalWeight: number,
+      uri: string,
+      yield: number
+    }
+
+
     this.dataService.formValue = this.ingredientsForm.value;
-    const ingredients = { ingr: this.ingredientsForm.value.ingredients.trim().replace(/,/g, '').split('\n') }
- 
-    this.dataService.sendPostRequest(ingredients).subscribe((data: any[]) => {
+    const ingredients = { ingr: this.ingredientsForm.value.ingredients.trim().replace(/,/g, '\n').split('\n') }
+
+    this.dataService.sendPostRequest(ingredients).subscribe((data: ResponseInterface[]) => {
+      console.log(data)
       this.nutrition = data;
       this.showNutrition = true
       this.isLoading = false;
       this.dataService.data = data;
-      this.router.navigate(['/result']);
+      this.router.navigate(['nutrition/result']);
 
     })
   }

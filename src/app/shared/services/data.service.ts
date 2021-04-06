@@ -8,6 +8,7 @@ import { environment } from './../../../environments/environment';
 export class DataService {
   public formValue = '';
   public data = [];
+  
   private REST_API_SERVER = `${environment.api}?app_id=${environment.app_id}&app_key=${environment.app_key}`;
 
   constructor(private httpClient: HttpClient) { }

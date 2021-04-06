@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,body{
+    margin: 0;
+    padding: 50px 0;
+ 
+     }
+
+
+body{
+    background:url('./assets/bg.jpg') no-repeat left center / cover;
+    background-attachment: fixed;
+}
+.wrapper{
+    background: #fff;
+    padding: 0px 0;
+    border-radius: 5px;
+    padding: 50px;
+    position: relative;
+ 
+ }
+ 
+ .btn.btn-primary {
+    background-color: #7aca25;
+    border-color: #7aca25;
+    color: #fff;
+}
+.btn.btn-primary:not([disabled]):hover {
+    background-color: #6db421;
+    border-color: #6db421;
+    color: #fff;
+}

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import {  AuthGuardService as AuthGuard} from '../shared/auth/auth-guard.service';
+import { AuthGuardService as AuthGuard } from '../shared/auth/auth-guard.service';
 
 // Components
 import { IngredientsFormComponent } from './ingredients-form/ingredients-form.component';
@@ -10,13 +10,16 @@ import { IngredientsResultComponent } from './ingredients-result/ingredients-res
 
 // Routes
 const routes: Routes = [
-  { path: '', redirectTo: 'nutrition', pathMatch: 'full'  },
-  { path: 'nutrition', component: IngredientsFormComponent, canActivate : [AuthGuard]  },
-  { path: 'result', component: IngredientsResultComponent, canActivate : [AuthGuard]   }
+  { path: 'analyse', component: IngredientsFormComponent, canActivate: [AuthGuard] },
+  { path: 'result', component: IngredientsResultComponent, canActivate: [AuthGuard] },
+  {
+    path: '**',
+    redirectTo: 'analyse',
+   }  
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes), ReactiveFormsModule],
-  exports: [RouterModule,ReactiveFormsModule]
+  exports: [RouterModule, ReactiveFormsModule]
 })
 export class NutritionRoutingModule { }

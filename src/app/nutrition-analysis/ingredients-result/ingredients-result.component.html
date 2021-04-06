@@ -1,41 +1,115 @@
-<div class="container">
-    <div class="row">
-        <div class="col pt-5">
-            <a class="btn btn-primary" [routerLink]="['/nutrition']">Back</a>
-        </div>
-    </div>
-    <div class="row mt-2" *ngIf="showError">
-        <div class="col">
-            <p class="text-danger">
-                We cannot calculate the nutrition for some ingredients.
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col mt-2" *ngIf="showNutrition">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Qty</th>
-                        <th scope="col">Unit</th>
-                        <th scope="col">Food</th>
-                        <th scope="col">Calories</th>
-                        <th scope="col">Weight</th>
-                     </tr>
-                </thead>
-                <tbody *ngIf="!showError">
-                    <tr *ngFor="let data of nutrition.ingredients; let i=index">
-                        <td scope="col">{{data.parsed[0].quantity}}</td>
-                        <td scope="col">{{data.parsed[0].measure}}</td>
-                        <td scope="col">{{data.parsed[0].foodMatch}}</td>
-                        <td scope="col">{{data.parsed[0].nutrients?.ENERC_KCAL?.quantity.toFixed(1)}} kcal</td>
-                        <td scope="col">{{data.parsed[0].weight.toFixed(1)}} g</td>
-  
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
- 
+<div class="wrapper w-75 mx-auto ">
 
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-primary float-right" [routerLink]="['/nutrition/analyse']">Back</a>
+            </div>
+        </div>
+        <div class="row mt-2" *ngIf="showError">
+            <div class="col">
+                <p class="text-danger">
+                    We cannot calculate the nutrition for some ingredients.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-2" *ngIf="showNutrition">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Food</th>
+                            <th scope="col">Calories</th>
+                            <th scope="col">Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="!showError">
+                        <tr *ngFor="let data of nutrition.ingredients; let i=index">
+                            <td scope="col">{{data.parsed[0].quantity}}</td>
+                            <td scope="col">{{data.parsed[0].measure}}</td>
+                            <td scope="col">{{data.parsed[0].foodMatch}}</td>
+                            <td scope="col">{{data.parsed[0].nutrients?.ENERC_KCAL?.quantity.toFixed(1)}} kcal</td>
+                            <td scope="col">{{data.parsed[0].weight.toFixed(1)}} g</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12 mt-2">
+                <div class="row">
+                    <div class="col">
+
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary float-right" (click)="showDetailTable()">Total</button>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col mt-2">
+                        <table class="table table-bordered" *ngIf="isDetailTableVisible">
+                            <tbody>
+                                <tr>
+                                    <td scope="col">Calories</td>
+                                    <td scope="col">{{nutrition?.calories}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col">Fat</td>
+                                    <td scope="col">{{nutrition.totalNutrients.FAT.quantity.toFixed(1)}}
+                                        {{nutrition.totalNutrients.FAT.unit}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col">Cholesterol</td>
+                                    <td scope="col">{{nutrition.totalNutrients.CHOLE.quantity.toFixed(1)}}
+                                        {{nutrition.totalNutrients.CHOLE.unit}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col">Sodium</td>
+                                    <td scope="col">{{nutrition.totalNutrients.NA.quantity.toFixed(1)}}
+                                        {{nutrition.totalNutrients.NA.unit}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col">Carbohydrate (Fiber, Sugar)</td>
+                                    <td scope="col">{{nutrition.totalNutrients.FIBTG.quantity.toFixed(1) +
+                                        nutrition.totalNutrients.SUGAR.quantity.toFixed(1)}}
+                                        {{nutrition.totalNutrients.NA.unit}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col">Protein</td>
+                                    <td scope="col">{{nutrition.totalNutrients.PROCNT.quantity.toFixed(1)}}
+                                        {{nutrition.totalNutrients.PROCNT.unit}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col">Calcium</td>
+                                    <td scope="col">{{nutrition.totalNutrients.CA.quantity.toFixed(1)}}
+                                        {{nutrition.totalNutrients.CA.unit}}</td>
+
+                                </tr>
+                                <tr>
+                                    <td scope="col">Iron</td>
+                                    <td scope="col">{{nutrition.totalNutrients.FE.quantity.toFixed(1)}}
+                                        {{nutrition.totalNutrients.FE.unit}}</td>
+
+                                </tr>
+                                <tr>
+                                    <td scope="col">Potassium</td>
+                                    <td scope="col">{{nutrition.totalNutrients.K.quantity.toFixed(1)}}
+                                        {{nutrition.totalNutrients.K.unit}}</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+    </div>
 </div>
